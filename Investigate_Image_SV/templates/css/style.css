@@ -1,0 +1,10 @@
+body {
+    font-size: 15px;
+}
+
+.container {
+    margin-top: 50px;
+}
+.row p {
+    margin-left: 100px;
+}

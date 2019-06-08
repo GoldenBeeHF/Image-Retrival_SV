@@ -1,0 +1,27 @@
+body {
+    font-size: 15px;
+    font-family: "Times New Roman", Times, serif;
+}
+.container {
+    border-style: inset;
+}
+.label_head {
+    text-align: center;
+    color: white;
+    background-color: #407CE5;
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.text-center {
+    font-weight: bold;
+}
+.col-form-label {
+    color: #6694e4;
+}
+.gallery {
+    margin-top: 5%;
+    height: 200px;
+    width: 200px;
+}
+
