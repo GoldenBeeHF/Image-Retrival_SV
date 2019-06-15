@@ -84,7 +84,7 @@ class STree:
             lstLink.append(t.id)
             while True:
                 # tìm vị trí khoảng cách nhỏ nhất
-                direct = function.findMatchDistance(tempVector, t.lstVector)
+                direct = function.findMinDistance(tempVector, t.lstVector)
                 # thêm vị trí vào danh sách tạm để quay lui sau khi thêm hình
                 lstVtLink.append(direct)
                 # tìm node link tới dựa vào vị trí vector có khoảng cách gần với vector ảnh truyền vào nhất
@@ -168,8 +168,8 @@ class STree:
                 if (int(hog.getId()) == int(cluster[1].getId())):
                     continue
 
-                if (function.computeDistanceByCount(hog.getVector(), cluster[0].getVector())
-                    > function.computeDistanceByCount(hog.getVector(), cluster[1].getVector())):
+                if (function.computeDistanceEuclide(hog.getVector(), cluster[0].getVector())
+                    > function.computeDistanceEuclide(hog.getVector(), cluster[1].getVector())):
                     clusterA.add(hog)
                 else:
                     clusterB.add(hog)
@@ -200,8 +200,8 @@ class STree:
                 if (int(v.getLink()) == int(cluster[1].getLink())):
                     continue
 
-                if (function.computeDistanceByCount(v.getVector(), cluster[0].getVector())
-                    > function.computeDistanceByCount(v.getVector(), cluster[1].getVector())):
+                if (function.computeDistanceEuclide(v.getVector(), cluster[0].getVector())
+                    > function.computeDistanceEuclide(v.getVector(), cluster[1].getVector())):
                     clusterA.add(v)
                 else:
                     clusterB.add(v)
@@ -236,8 +236,8 @@ class STree:
             if (int(v.getLink()) == int(cluster[1].getLink())):
                 continue
 
-            if (function.computeDistanceByCount(v.getVector(), cluster[0].getVector())
-                > function.computeDistanceByCount(v.getVector(), cluster[1].getVector())):
+            if (function.computeDistanceEuclide(v.getVector(), cluster[0].getVector())
+                > function.computeDistanceEuclide(v.getVector(), cluster[1].getVector())):
                 clusterA.add(v)
             else:
                 clusterB.add(v)
@@ -277,8 +277,8 @@ class STree:
             if (int(hog.getId()) == int(cluster[1].getId())):
                 continue
 
-            if (function.computeDistanceByCount(hog.getVector(), cluster[0].getVector())
-                > function.computeDistanceByCount(hog.getVector(), cluster[1].getVector())):
+            if (function.computeDistanceEuclide(hog.getVector(), cluster[0].getVector())
+                > function.computeDistanceEuclide(hog.getVector(), cluster[1].getVector())):
                 clusterA.add(hog)
             else:
                 clusterB.add(hog)

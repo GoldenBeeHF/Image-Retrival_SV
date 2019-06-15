@@ -35,7 +35,7 @@ print len(arr)
 
 lst = []
 countImage = 0
-for i in range(0, 1681):
+for i in range(0, 1733):
     vector = []
     for j in range(0, 42):
         vector.append(float(arr[42 * countImage + j]))
