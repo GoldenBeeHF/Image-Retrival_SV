@@ -76,13 +76,12 @@ def upload():
         #     fTimeTree.write('\n')
         #     print i
 
-        countLinear = 0
-        countTree = 0
+        # countLinear = 0
+        # countTree = 0
         # lstImg, countLinear = findTop100(destination)
         lstImg, countTree = findImageInTree(destination)
         image_names = []
-        lstMSSV = []
-        print lstImg
+        # lstMSSV = []
         # for i in range(0, len(lstImg)):
         #     lstMSSV.append(sinhviens[int(lstImg[i])].getMaHSSV())
         # print lstMSSV
@@ -111,11 +110,10 @@ def result_image(filename):
 @app.route('/infostudent/<index>', methods=['GET', 'POST'])
 def result(index):
     index = index.split('.')[0]
-    print(index)
     for i in range(len(sinhviens)):
         if index == sinhviens[i].getMaHSSV():
             return render_template("info.html", sv=sinhviens[i])
-    # sv = sinhviens[int(index)]
+    return render_template("not-found.html", mssv=index)
     
 
 
