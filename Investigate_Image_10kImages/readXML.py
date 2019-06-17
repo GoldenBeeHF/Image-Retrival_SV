@@ -43,6 +43,10 @@ def readXML():
             "KHOA")[0].firstChild.data)
         sinhvien.setNganh(svs[i].getElementsByTagName(
             "NGANH")[0].firstChild.data)
+        sinhvien.setHe(svs[i].getElementsByTagName(
+            "HE")[0].firstChild.data)
+        sinhvien.setLoaiHinhDaoTao(svs[i].getElementsByTagName(
+            "LOAIHINHDAOTAO")[0].firstChild.data)
         # sinhvien.setNgayNhapHoc(svs[i].getElementsByTagName(
         sinhvien.setImg(str(sinhvien.getMaHSSV()) + ".jpg")
 

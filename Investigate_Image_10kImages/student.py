@@ -29,8 +29,17 @@ class SinhVien:
 	Email           = "daulaudoan@gmail.com"
 	TrangThai       = "Capit\xe1n\n"
 	Img             = "sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
-    
+	He              = "Capit\xe1n\n"
+	LoaiHinhDaoTao  = "Capit\xe1n\n"
 	#method
+	def setHe(self, he):
+		self.He = he
+	def getHe(self):
+		return self.He
+	def setLoaiHinhDaoTao(self, loaiHinhDaoTao):
+		self.LoaiHinhDaoTao = loaiHinhDaoTao
+	def getLoaiHinhDaoTao(self):
+		return self.LoaiHinhDaoTao
 	def setImg(self, Img):
 		self.Img = Img
 	def getImg(self):
@@ -60,7 +69,7 @@ class SinhVien:
 	def getNgaySinh(self):
 		return self.NgaySinh
 	def setNoiSinh(self, NoiSinh):
-		if NoiSinh is None:
+		if NoiSinh != None:
 			self.NoiSinh = NoiSinh
 		else:
 			self.NoiSinh = "Not Found"
@@ -122,10 +131,6 @@ class SinhVien:
 		self.TrangThai = TrangThai
 	def getTrangThai(self):
 		return self.TrangThai
-	def setKhuVuc(self, KhuVuc):
-		self.KhuVuc = KhuVuc
-	def getKhuVuc(self):
-		return self.KhuVuc
 	def setKhuVuc(self, KhuVuc):
 		self.KhuVuc = KhuVuc
 	def getKhuVuc(self):
