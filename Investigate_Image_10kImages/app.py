@@ -82,6 +82,7 @@ def upload():
         lstImg, countTree = findImageInTree(destination)
         image_names = []
         lstMSSV = []
+        print lstImg
         # for i in range(0, len(lstImg)):
         #     lstMSSV.append(sinhviens[int(lstImg[i])].getMaHSSV())
         # print lstMSSV
@@ -94,7 +95,7 @@ def upload():
     # return send_from_directory("images", filename, as_attachment=True)
     # return render_template("complete.html", image_name=filename)
     # image_names = os.listdir('./images')
-    return render_template("gallery.html", filename=filename, image_names=image_names, amount=amount, lstMSSV=lstMSSV)
+    return render_template("gallery.html", filename=filename, image_names=image_names, amount=amount, lstMSSV=lstImg)
 
 
 @app.route('/upload/<filename>')
@@ -111,8 +112,11 @@ def result_image(filename):
 def result(index):
     index = index.split('.')[0]
     print(index)
-    sv = sinhviens[int(index)]
-    return render_template("info.html", sv=sv)
+    for i in range(len(sinhviens)):
+        if index == sinhviens[i].getMaHSSV():
+            return render_template("info.html", sv=sinhviens[i])
+    # sv = sinhviens[int(index)]
+    
 
 
 if __name__ == "__main__":

@@ -1,6 +1,5 @@
 class SinhVien:
     # filed
-	STT             = 1
 	MaHSSV          = 2001160163 
 	HoDem           = "Capit\xe1n\n"
 	Ten             = "Capit\xe1n\n"
@@ -26,23 +25,12 @@ class SinhVien:
 	LoaiDaoTao      = "Capit\xe1n\n"
 	Nganh           = "Capit\xe1n\n"
 	Nghe            = "Capit\xe1n\n"
-	NienKhoa        = "2016-2020"
-	# NgaySinhCha     = "1965"
-	# HoTenCha        = "Capit\xe1n\n"
-	# NgheNghiepCha   = "Capit\xe1n\n"
-	# NgaySinhMe      = "1967"
-	# HoTenMe         = "Capit\xe1n\n"
-	# NgheNghiepMe    = "May"
 	DienThoai       = "0974112161"
 	Email           = "daulaudoan@gmail.com"
 	TrangThai       = "Capit\xe1n\n"
 	Img             = "sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
     
 	#method
-	def setSTT(self, STT):
-		self.STT = int(STT) - 1
-	def getSTT(self):
-		return self.STT
 	def setImg(self, Img):
 		self.Img = Img
 	def getImg(self):
@@ -122,10 +110,6 @@ class SinhVien:
 		self.Nghe = Nghe
 	def getNghe(self):
 		return self.Nghe
-	def setNienKhoa(self, NienKhoa):
-		self.NienKhoa = NienKhoa
-	def getNienKhoa(self):
-		return self.NienKhoa
 	def setDienThoai(self, DienThoai):
 		self.DienThoai = DienThoai
 	def getDienThoai(self):
