@@ -34,5 +34,21 @@
         </div>
       </div>
     </div>
+    <div class="text-center" style="margin-top: 5px">
+      <button class="btn-primary mr-2" onclick="goBack()" style="border-radius: 5px; height: 50px; font-size: 1.5rem;">
+          <span><b>Quay lại</b></span>
+      </button>
+      <button class="btn-primary mr-2" onclick="document.location.href='/'" style="border-radius: 5px; height: 50px; font-size: 1.5rem;">
+        <span><b>Về màn hình chính</b></span>
+      </button>
+      <button class="btn-primary" onclick="document.location.href='/addstudent/{{mssv}}'" style="border-radius: 5px; height: 50px; font-size: 1.5rem;">
+        <span><b>Thêm thông tin sinh viên</b></span>
+      </button>
+    </div>
+    <script>
+      function goBack() {
+        window.history.back();
+      }
+    </script>
   </body>
 </html>

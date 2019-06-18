@@ -109,13 +109,34 @@ def result_image(filename):
 
 @app.route('/infostudent/<index>', methods=['GET', 'POST'])
 def result(index):
+    if request.method == "POST":
+        student = SinhVien()
+        student.setMaHSSV(index)
+        student.setHoDem(request.form['ho'])
+        student.setTen(request.form['ten'])
+        student.setGioiTinh(request.form['gt'])
+        student.setNgaySinh(request.form['ns'])
+        student.setNoiSinh(request.form['quequan'])
+        student.setMaLop(request.form['lop'])
+        student.setKhoaHoc(request.form['namvaohoc'])
+        student.setHe(request.form['he'])
+        student.setLoaiHinhDaoTao(request.form['loaidaotao'])
+        student.setNghe(request.form['khoa'])
+        student.setNganh(request.form['nganh'])
+        student.setTrangThai(request.form['trangthai'])
+        student.setImg(index + ".jpg")
+        sinhviens.append(student)
+
     index = index.split('.')[0]
     for i in range(len(sinhviens)):
         if index == sinhviens[i].getMaHSSV():
             return render_template("info.html", sv=sinhviens[i])
     return render_template("not-found.html", mssv=index)
     
-
+@app.route('/addstudent/<index>', methods=['GET', 'POST'])
+def add(index):
+    image = index + ".jpg"
+    return render_template("add-sv.html", img=image, mssv=index)
 
 if __name__ == "__main__":
     app.run(debug=True)
