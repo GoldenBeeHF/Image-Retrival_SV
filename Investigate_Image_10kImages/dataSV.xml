@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <Data xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<sinhvien>
 		<MSSV>2001150068</MSSV>
@@ -24339,7 +24339,7 @@
 		<HO>Dương Đạt</HO>
 		<TEN>Phú</TEN>
 		<GT>Nam</GT>
-		<NS/>
+		<NS />
 		<NOISINH>TP. Hồ Chí Minh</NOISINH>
 		<LOP>18CDTH2</LOP>
 		<NAM>2018</NAM>
@@ -24593,7 +24593,7 @@
 		<HO>Dương Thị Thảo</HO>
 		<TEN>Phương</TEN>
 		<GT>Nữ</GT>
-		<NS/>
+		<NS />
 		<NOISINH>Tỉnh Tây Ninh</NOISINH>
 		<LOP>18CDTH2</LOP>
 		<NAM>2018</NAM>
@@ -27366,7 +27366,7 @@
 		<HO>Lê Phạm Quốc</HO>
 		<TEN>Tuấn</TEN>
 		<GT>Nam</GT>
-		<NS/>
+		<NS />
 		<NOISINH>Tỉnh Bến Tre</NOISINH>
 		<LOP>18CDTH2</LOP>
 		<NAM>2018</NAM>
@@ -27861,7 +27861,7 @@
 		<HO>Phan Xuân</HO>
 		<TEN>Vinh</TEN>
 		<GT>Nam</GT>
-		<NS/>
+		<NS />
 		<NOISINH>TP. Hồ Chí Minh</NOISINH>
 		<LOP>18CDTH2</LOP>
 		<NAM>2018</NAM>
@@ -28141,4 +28141,4 @@
 		<NGANH>Công nghệ phần mềm</NGANH>
 		<TINHTRANG>Đang học</TINHTRANG>
 	</sinhvien>
-</Data>
+<sinhvien><MSSV>2001130013</MSSV><HO>AAAA</HO><TEN>AA</TEN><GT>Nữ</GT><NS>30/03/1997</NS><NOISINH>Quảng Nam</NOISINH><LOP>06DHTH01</LOP><NAM>09</NAM><HE>Đại học</HE><LOAIHINHDAOTAO>AA</LOAIHINHDAOTAO><KHOA>AA</KHOA><NGANH>aAA</NGANH><TINHTRANG>AA</TINHTRANG></sinhvien></Data>
