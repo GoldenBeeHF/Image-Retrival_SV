@@ -6,6 +6,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
         integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/bootstrap.min.css') }}"
+    />
 </head>
 
 <body>
@@ -17,6 +21,39 @@
         <div id="msg"></div>
         <input class='btn-primary mt-3' type="submit" value="Upload!" id="upload-button">
     </form>
+
+    <div class="container mt-5 py-5 text-center">
+        <h1 class="mb-5" style="color: #007bff">Danh sách sinh viên</h1>
+        {% for i in range(len) %}
+            <div class="row mx-5 mb-2 pt-2" style="border: 1px solid black; box-shadow: 0.5px; border-radius: 5px">
+                <div class="col-sm-4">
+                    <a href="/infostudent/{{listSV[i].getMaHSSV()}}"><img class="img-thumbnail gallery"
+                        style="width: 200px" src=" {{url_for('send_image', filename=listSV[i].getImg())}}"></a>
+                    <br><label><b>MSSV:{{listSV[i].getMaHSSV()}}</b></label>
+                </div>
+                <div class="col-sm-8 my-auto row text-left">
+                    <div class="col-6">
+                        <label><b>Họ Tên:</b> {{listSV[i].getHoDem()}} {{listSV[i].getTen()}}</label><br>
+                        <label><b>Ngày sinh:</b> {{listSV[i].getNgaySinh()}}</label><br>
+                        <label><b>Quê quán:</b> {{listSV[i].getNoiSinh()}}</label><br>
+                        <label><b>Mã lớp:</b> {{listSV[i].getMaLop()}}</label><br>
+                        <label><b>Khoa:</b> {{listSV[i].getNghe()}}</label><br>
+                        <label><b>Ngành:</b> {{listSV[i].getNganh()}}</label>
+                    </div>
+                    <div class="col-4 my-auto">
+                        <button class="btn-primary mb-2" onclick="document.location.href='/infostudent/{{listSV[i].getMaHSSV()}}'"  style="border-radius: 5px; width: 200px; height: 50px;">
+                            <span><b>Xem thông tin chi tiết</b></span>
+                        </button>
+                        <button class="btn-primary" onclick="document.location.href='/editstudent/{{listSV[i].getMaHSSV()}}'"  style="border-radius: 5px; width: 200px; height: 50px;">
+                            <span><b>Chỉnh sửa thông tin sinh viên</b></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        <!-- <a style="float:right; color: red; font-weight: bold; font-family:Verdana, Geneva, Tahoma, sans-serif"
+            id="loadmore">load more</a> -->
+    </div>
 </body>
 <script>
     $("#file-picker").change(function () {

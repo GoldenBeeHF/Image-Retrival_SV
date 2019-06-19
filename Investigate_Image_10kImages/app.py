@@ -33,8 +33,8 @@ def checkMssvExist(listSV, mssv):
 
 @app.route("/")
 def index():
-    return render_template("upload.html")
-
+    leng = len(sinhviens)
+    return render_template("upload.html", listSV=sinhviens, len=leng)
 
 @app.route("/upload", methods=["POST"])
 def upload():
