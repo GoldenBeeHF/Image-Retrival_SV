@@ -4,7 +4,7 @@ from uuid import uuid4
 
 from flask import Flask, request, render_template, send_from_directory
 
-from readXML import readXML
+from readXML import *
 
 from student import SinhVien
 
@@ -109,7 +109,9 @@ def result_image(filename):
 
 @app.route('/infostudent/<index>', methods=['GET', 'POST'])
 def result(index):
-    if request.method == "POST":
+    rule = request.url_rule
+    index = index.split('.')[0]
+    if 'addstudent' in rule.rule:
         student = SinhVien()
         student.setMaHSSV(index)
         student.setHoDem(request.form['ho'])
@@ -126,8 +128,25 @@ def result(index):
         student.setTrangThai(request.form['trangthai'])
         student.setImg(index + ".jpg")
         sinhviens.append(student)
-
-    index = index.split('.')[0]
+        writeXML(student)
+        return render_template("upload.html")
+    elif 'editstudent' in rule.rule:
+        for i in range(len(sinhviens)):
+            if index == sinhviens[i].getMaHSSV():
+                sinhviens[i].setHoDem(request.form['ho'])
+                sinhviens[i].setTen(request.form['ten'])
+                sinhviens[i].setGioiTinh(request.form['gt'])
+                sinhviens[i].setNgaySinh(request.form['ns'])
+                sinhviens[i].setNoiSinh(request.form['quequan'])
+                sinhviens[i].setMaLop(request.form['lop'])
+                sinhviens[i].setKhoaHoc(request.form['namvaohoc'])
+                sinhviens[i].setHe(request.form['he'])
+                sinhviens[i].setLoaiHinhDaoTao(request.form['loaidaotao'])
+                sinhviens[i].setNghe(request.form['khoa'])
+                sinhviens[i].setNganh(request.form['nganh'])
+                sinhviens[i].setTrangThai(request.form['trangthai'])
+                sinhviens[i].setImg(index + ".jpg")
+                return render_template("info.html", sv=sinhviens[i])
     for i in range(len(sinhviens)):
         if index == sinhviens[i].getMaHSSV():
             return render_template("info.html", sv=sinhviens[i])
@@ -137,6 +156,13 @@ def result(index):
 def add(index):
     image = index + ".jpg"
     return render_template("add-sv.html", img=image, mssv=index)
+
+@app.route('/editstudent/<index>', methods=['GET', 'POST'])
+def edit(index):
+    for i in range(len(sinhviens)):
+        if index == sinhviens[i].getMaHSSV():
+            return render_template("edit-sv.html", sv=sinhviens[i])
+    
 
 if __name__ == "__main__":
     app.run(debug=True)
