@@ -19,35 +19,65 @@ def readXML():
         sinhvien = SinhVien()
         sinhvien.setMaHSSV(svs[i].getElementsByTagName(
             "MSSV")[0].firstChild.data)
-        sinhvien.setHoDem(svs[i].getElementsByTagName(
+        try:
+            sinhvien.setHoDem(svs[i].getElementsByTagName(
             "HO")[0].firstChild.data)
-        sinhvien.setTen(svs[i].getElementsByTagName("TEN")[0].firstChild.data)
-        sinhvien.setGioiTinh(svs[i].getElementsByTagName(
+        except:
+            sinhvien.setHoDem("")
+        try:
+            sinhvien.setTen(svs[i].getElementsByTagName("TEN")[0].firstChild.data)
+        except:
+            sinhvien.setTen("")
+        try:
+            sinhvien.setGioiTinh(svs[i].getElementsByTagName(
             "GT")[0].firstChild.data)
+        except:
+            sinhvien.setGioiTinh("")
         try:
             sinhvien.setNgaySinh(svs[i].getElementsByTagName(
             "NS")[0].firstChild.data)
         except:
             sinhvien.setNgaySinh("")
-        sinhvien.setKhoaHoc(svs[i].getElementsByTagName(
+        try:
+            sinhvien.setKhoaHoc(svs[i].getElementsByTagName(
             "NAM")[0].firstChild.data)
+        except:
+            sinhvien.setKhoaHoc("")
         try:
             sinhvien.setNoiSinh(svs[i].getElementsByTagName(
                 "NOISINH")[0].firstChild.data)
         except:
             sinhvien.setNoiSinh("")
-        sinhvien.setMaLop(svs[i].getElementsByTagName(
+        try:
+            sinhvien.setMaLop(svs[i].getElementsByTagName(
             "LOP")[0].firstChild.data)
-        sinhvien.setTrangThai(svs[i].getElementsByTagName(
+        except:
+            sinhvien.setMaLop("")
+        try:
+            sinhvien.setTrangThai(svs[i].getElementsByTagName(
             "TINHTRANG")[0].firstChild.data)
-        sinhvien.setNghe(svs[i].getElementsByTagName(
+        except:
+            sinhvien.setTrangThai("")
+        try:
+            sinhvien.setNghe(svs[i].getElementsByTagName(
             "KHOA")[0].firstChild.data)
-        sinhvien.setNganh(svs[i].getElementsByTagName(
+        except:
+            sinhvien.setNghe("")
+        try:
+            sinhvien.setNganh(svs[i].getElementsByTagName(
             "NGANH")[0].firstChild.data)
-        sinhvien.setHe(svs[i].getElementsByTagName(
+        except:
+            sinhvien.setNganh("")
+        try:
+            sinhvien.setHe(svs[i].getElementsByTagName(
             "HE")[0].firstChild.data)
-        sinhvien.setLoaiHinhDaoTao(svs[i].getElementsByTagName(
+        except:
+            sinhvien.setHe("")
+        try:
+            sinhvien.setLoaiHinhDaoTao(svs[i].getElementsByTagName(
             "LOAIHINHDAOTAO")[0].firstChild.data)
+        except:
+            sinhvien.setLoaiHinhDaoTao("")
         # sinhvien.setNgayNhapHoc(svs[i].getElementsByTagName(
         sinhvien.setImg(str(sinhvien.getMaHSSV()) + ".jpg")
 

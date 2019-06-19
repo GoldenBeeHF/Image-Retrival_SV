@@ -25,6 +25,11 @@ app = Flask(__name__)
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
+def checkMssvExist(listSV, mssv):
+    for i in range(len(listSV)):
+        if mssv == listSV[i].getMaHSSV():
+            return [True, i]
+    return [False, None]
 
 @app.route("/")
 def index():
@@ -109,48 +114,48 @@ def result_image(filename):
 
 @app.route('/infostudent/<index>', methods=['GET', 'POST'])
 def result(index):
-    rule = request.url_rule
-    index = index.split('.')[0]
-    if 'addstudent' in rule.rule:
-        student = SinhVien()
-        student.setMaHSSV(index)
-        student.setHoDem(request.form['ho'])
-        student.setTen(request.form['ten'])
-        student.setGioiTinh(request.form['gt'])
-        student.setNgaySinh(request.form['ns'])
-        student.setNoiSinh(request.form['quequan'])
-        student.setMaLop(request.form['lop'])
-        student.setKhoaHoc(request.form['namvaohoc'])
-        student.setHe(request.form['he'])
-        student.setLoaiHinhDaoTao(request.form['loaidaotao'])
-        student.setNghe(request.form['khoa'])
-        student.setNganh(request.form['nganh'])
-        student.setTrangThai(request.form['trangthai'])
-        student.setImg(index + ".jpg")
-        sinhviens.append(student)
-        writeXML(student)
-        return render_template("upload.html")
-    elif 'editstudent' in rule.rule:
-        for i in range(len(sinhviens)):
-            if index == sinhviens[i].getMaHSSV():
-                sinhviens[i].setHoDem(request.form['ho'])
-                sinhviens[i].setTen(request.form['ten'])
-                sinhviens[i].setGioiTinh(request.form['gt'])
-                sinhviens[i].setNgaySinh(request.form['ns'])
-                sinhviens[i].setNoiSinh(request.form['quequan'])
-                sinhviens[i].setMaLop(request.form['lop'])
-                sinhviens[i].setKhoaHoc(request.form['namvaohoc'])
-                sinhviens[i].setHe(request.form['he'])
-                sinhviens[i].setLoaiHinhDaoTao(request.form['loaidaotao'])
-                sinhviens[i].setNghe(request.form['khoa'])
-                sinhviens[i].setNganh(request.form['nganh'])
-                sinhviens[i].setTrangThai(request.form['trangthai'])
-                sinhviens[i].setImg(index + ".jpg")
-                return render_template("info.html", sv=sinhviens[i])
+    ms = index.split('.')[0]
+    if request.method == 'POST':
+        isExist, direct = checkMssvExist(sinhviens, ms)
+        if isExist == True:
+            # Edit SV
+            sinhviens[direct].setHoDem(request.form['ho'])
+            sinhviens[direct].setTen(request.form['ten'])
+            sinhviens[direct].setGioiTinh(request.form['gt'])
+            sinhviens[direct].setNgaySinh(request.form['ns'])
+            sinhviens[direct].setNoiSinh(request.form['quequan'])
+            sinhviens[direct].setMaLop(request.form['lop'])
+            sinhviens[direct].setKhoaHoc(request.form['namvaohoc'])
+            sinhviens[direct].setHe(request.form['he'])
+            sinhviens[direct].setLoaiHinhDaoTao(request.form['loaidaotao'])
+            sinhviens[direct].setNghe(request.form['khoa'])
+            sinhviens[direct].setNganh(request.form['nganh'])
+            sinhviens[direct].setTrangThai(request.form['trangthai'])
+            return render_template("info.html", sv=sinhviens[direct])
+        else:
+            # Add SV
+            student = SinhVien()
+            student.setMaHSSV(ms)
+            student.setHoDem(request.form['ho'])
+            student.setTen(request.form['ten'])
+            student.setGioiTinh(request.form['gt'])
+            student.setNgaySinh(request.form['ns'])
+            student.setNoiSinh(request.form['quequan'])
+            student.setMaLop(request.form['lop'])
+            student.setKhoaHoc(request.form['namvaohoc'])
+            student.setHe(request.form['he'])
+            student.setLoaiHinhDaoTao(request.form['loaidaotao'])
+            student.setNghe(request.form['khoa'])
+            student.setNganh(request.form['nganh'])
+            student.setTrangThai(request.form['trangthai'])
+            student.setImg(index + ".jpg")
+            sinhviens.append(student)
+            writeXML(student)
+            return render_template("info.html", sv=student)
     for i in range(len(sinhviens)):
-        if index == sinhviens[i].getMaHSSV():
+        if ms == sinhviens[i].getMaHSSV():
             return render_template("info.html", sv=sinhviens[i])
-    return render_template("not-found.html", mssv=index)
+    return render_template("not-found.html", mssv=ms)
     
 @app.route('/addstudent/<index>', methods=['GET', 'POST'])
 def add(index):
