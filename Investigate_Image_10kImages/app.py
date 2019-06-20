@@ -131,6 +131,7 @@ def result(index):
             sinhviens[direct].setNghe(request.form['khoa'])
             sinhviens[direct].setNganh(request.form['nganh'])
             sinhviens[direct].setTrangThai(request.form['trangthai'])
+            editXML(sinhviens[direct])
             return render_template("info.html", sv=sinhviens[direct])
         else:
             # Add SV

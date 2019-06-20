@@ -145,3 +145,14 @@ def writeXML(sinhvien):
 
     # create a new XML file with the new element
     tree.write('dataSV.xml',encoding="UTF-8",xml_declaration=True)
+
+def editXML(sinhviens):
+    
+    xsi =  "http://www.w3.org/2001/XMLSchema-instance"
+    name = "xmlns:xsi"
+    tree = ET.parse('dataSV.xml')  
+    root = tree.getroot()
+    for elem in root:  
+        for subelem in elem.findall('sinhvien'):
+            print(subelem.get('MSSV'))
+   
